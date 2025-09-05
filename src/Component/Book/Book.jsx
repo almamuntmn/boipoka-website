@@ -11,7 +11,7 @@ const Book = ({ book }) => {
             <div className="card-body">
                 <div className="card-actions justify-start mb-2">
                     {tags.map(tag => (
-                        <div className="badge badge-outline" key={tag}>{tag}</div>
+                        <div className="text-green-300 mr-3 bg-slate-600 py-1 px-4 rounded-full" key={tag}>{tag}</div>
                     ))}
                 </div>
                 <h2 className="card-title">
@@ -21,7 +21,7 @@ const Book = ({ book }) => {
                 <p>{author}</p>
                 <div className="divider"></div>
                 <div className="card-actions justify-between">
-                    <div className="badge badge-outline">{category}</div>
+                    <div className="">{category}</div>
                     <div className="rating">
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" aria-label="1 star" />
                         <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" aria-label="2 star" defaultChecked />
