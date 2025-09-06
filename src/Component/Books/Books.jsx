@@ -9,7 +9,6 @@ const Books = () => {
         fetch('./booksData.json')
             .then(response => response.json())
             .then(data => setBooks(data))
-            .then(data => console.log(data))
             .catch(error => console.error('Error fetching books:', error));
     }, []);
 
