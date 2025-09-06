@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { addtoStoredReadList } from '../../Utility/addToDb';
 
 const BookDetails = () => {
     const { bookId } = useParams();
@@ -7,12 +8,16 @@ const BookDetails = () => {
     const data = useLoaderData();
 
     const book = data.find(item => item.bookId === id);
-    console.log(data, book);
 
     const { bookName, image, author, tags, category, review, totalPages, publisher, yearOfPublishing, rating } = book || {};
 
+    const handleMarkAsRead = (id) => {
+        // Implement the logic to mark the book as read
+        addtoStoredReadList(id);
+    }
+
     return (
-        <div className="hero min-h-screen mb-20 px-4 md:px-8 lg:px-16">
+        <div className="hero min-h-screen mb-20 px-4 md:px-8 lg:px-10">
             <div className="hero-content flex-col lg:flex-row gap-6 md:gap-10 items-start">
                 <img
                     src={image}
@@ -50,8 +55,8 @@ const BookDetails = () => {
                     
                     <div className="divider"></div>
                     <div className="flex flex-col sm:flex-row gap-3">
-                        <button className="btn btn-outline btn-success w-full sm:w-auto">Read</button>
-                        <button className="btn btn-info w-full sm:w-auto">Wishlist</button>
+                        <button className="btn btn-outline btn-success w-full sm:w-auto" onClick={() => handleMarkAsRead(id)}>Mark as Read</button>
+                        <button className="btn btn-info w-full sm:w-auto">Add to Wishlist</button>
                     </div>
                 </div>
             </div>
