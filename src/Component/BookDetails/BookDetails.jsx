@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
-import { addtoStoredReadList } from '../../Utility/addToDb';
+import { addtoStoredReadList, addtoStoredWishList } from '../../Utility/addToDb';
 
 const BookDetails = () => {
     const { bookId } = useParams();
@@ -14,6 +14,11 @@ const BookDetails = () => {
     const handleMarkAsRead = (id) => {
         // Implement the logic to mark the book as read
         addtoStoredReadList(id);
+    }
+
+    const handleAddToWishlist = (id) => {
+        // Implement the logic to add the book to the wishlist
+        addtoStoredWishList(id);
     }
 
     return (
@@ -32,7 +37,7 @@ const BookDetails = () => {
                     <p><span className="font-semibold">Category:</span> {category}</p>
                     
                     <div className="divider"></div>
-                    <p className="font-light">
+                    <p className="font-extralight">
                         <span className="font-semibold text-orange-400">Review:</span> {review}
                     </p>
                     
@@ -48,15 +53,15 @@ const BookDetails = () => {
                     </div>
                     
                     <div className="divider"></div>
-                    <p className="mb-2"><span className="font-semibold">Total Pages:</span> {totalPages}</p>
-                    <p className="mb-2"><span className="font-semibold">Publisher:</span> {publisher}</p>
-                    <p className="mb-2"><span className="font-semibold">Year of Publishing:</span> {yearOfPublishing}</p>
-                    <p className="mb-2"><span className="font-semibold">Rating:</span> {rating}</p>
-                    
+                    <p className="mb-2"><span className="font-extralight">Total Pages:</span> {totalPages}</p>
+                    <p className="mb-2"><span className="font-extralight">Publisher:</span> {publisher}</p>
+                    <p className="mb-2"><span className="font-extralight">Year of Publishing:</span> {yearOfPublishing}</p>
+                    <p className="mb-2"><span className="font-extralight">Rating:</span> {rating}</p>
+
                     <div className="divider"></div>
                     <div className="flex flex-col sm:flex-row gap-3">
                         <button className="btn btn-outline btn-success w-full sm:w-auto" onClick={() => handleMarkAsRead(id)}>Mark as Read</button>
-                        <button className="btn btn-info w-full sm:w-auto">Add to Wishlist</button>
+                        <button className="btn btn-info w-full sm:w-auto" onClick={() => handleAddToWishlist(id)}>Add to Wishlist</button>
                     </div>
                 </div>
             </div>
